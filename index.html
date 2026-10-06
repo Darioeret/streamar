@@ -389,14 +389,14 @@
         </div>
 
         <div class="controls-bar">
-            <button class="ctrl-btn ch-up" onclick="changeChannel(-1)" title="Canal anterior"></button>
+            <button class="ctrl-btn ch-up" onclick="changeChannel(-1)" title="Canal anterior">⬆</button>
             <button class="ctrl-btn" onclick="openGuide()" title="Guía de canales">☰</button>
             <div class="channel-display">
                 <div class="channel-display-num" id="ctrlChNum">--</div>
                 <div class="channel-display-name" id="ctrlChName">Sin canal</div>
             </div>
             <button class="ctrl-btn fav" id="favBtn" onclick="toggleFav()" title="Favorito">⭐</button>
-            <button class="ctrl-btn ch-down" onclick="changeChannel(1)" title="Canal siguiente">⬇</button>
+            <button class="ctrl-btn ch-down" onclick="changeChannel(1)" title="Canal siguiente"></button>
             <button class="ctrl-btn fullscreen-btn" onclick="toggleFullscreen()" title="Pantalla completa">⛶</button>
         </div>
     </div>
@@ -443,21 +443,21 @@
     <script>
         // ===== CANALES =====
         const channels = [
-            { id: 1, name: "Luzu", category: "entretenimiento", views: "92.145.765", emoji: "🎮", platform: "twitch", twitchUser: "luzu", description: "Gaming y entretenimiento" },
+            { id: 1, name: "Luzu", category: "entretenimiento", views: "92.145.765", emoji: "", platform: "twitch", twitchUser: "luzu", description: "Gaming y entretenimiento" },
             { id: 2, name: "Olga", category: "entretenimiento", views: "45.147.073", emoji: "🎭", platform: "twitch", twitchUser: "olgavillafane", description: "Humor y variedades" },
             { id: 3, name: "Azz Stream", category: "entretenimiento", views: "19.998.980", emoji: "🎬", platform: "twitch", twitchUser: "azzstream", description: "Streams y contenido" },
-            { id: 4, name: "Blender", category: "entretenimiento", views: "14.187.432", emoji: "", platform: "twitch", twitchUser: "blenderar", description: "Creatividad y diseño" },
-            { id: 5, name: "La Casa Stream", category: "entretenimiento", views: "13.247.086", emoji: "🏠", platform: "twitch", twitchUser: "lacasastream", description: "Reality y streams" },
+            { id: 4, name: "Blender", category: "entretenimiento", views: "14.187.432", emoji: "🎨", platform: "twitch", twitchUser: "blenderar", description: "Creatividad y diseño" },
+            { id: 5, name: "La Casa Stream", category: "entretenimiento", views: "13.247.086", emoji: "", platform: "twitch", twitchUser: "lacasastream", description: "Reality y streams" },
             { id: 6, name: "Bondi", category: "entretenimiento", views: "11.887.764", emoji: "🚌", platform: "twitch", twitchUser: "bondiar", description: "Cultura urbana" },
-            { id: 7, name: "Resumido Info", category: "noticias", views: "5.561.484", emoji: "📰", platform: "youtube", youtubeId: "UCResumidoInfo", description: "Noticias resumidas" },
+            { id: 7, name: "Resumido Info", category: "noticias", views: "5.561.484", emoji: "📰", platform: "youtube", youtubeSearch: "Resumido Info en vivo", description: "Noticias resumidas" },
             { id: 8, name: "Picado TV", category: "entretenimiento", views: "5.017.700", emoji: "⚽", platform: "twitch", twitchUser: "picadotv", description: "Deportes y más" },
             { id: 9, name: "Carnaval", category: "entretenimiento", views: "4.595.073", emoji: "🎉", platform: "twitch", twitchUser: "carnavalar", description: "Fiesta y música" },
-            { id: 10, name: "Vorterix", category: "musica", views: "4.994.387", emoji: "🎵", platform: "youtube", youtubeId: "UCVorterix", description: "Radio y música en vivo" },
-            { id: 11, name: "Infobae", category: "noticias", views: "4.164.566", emoji: "📡", platform: "youtube", youtubeId: "UCvK1bU99XlXf5MBuL28bOjQ", description: "Noticias 24/7" },
+            { id: 10, name: "Vorterix", category: "musica", views: "4.994.387", emoji: "🎵", platform: "youtube", youtubeSearch: "Vorterix en vivo", description: "Radio y música en vivo" },
+            { id: 11, name: "Infobae", category: "noticias", views: "4.164.566", emoji: "📡", platform: "youtube", youtubeSearch: "Infobae en vivo", description: "Noticias 24/7" },
             { id: 12, name: "Gelatina", category: "entretenimiento", views: "2.809.375", emoji: "🍮", platform: "twitch", twitchUser: "gelatinaar", description: "Contenido juvenil" },
-            { id: 13, name: "Futurock", category: "musica", views: "2.244.463", emoji: "🎸", platform: "youtube", youtubeId: "UCFuturock", description: "Rock y música alternativa" },
+            { id: 13, name: "Futurock", category: "musica", views: "2.244.463", emoji: "", platform: "youtube", youtubeSearch: "Futurock en vivo", description: "Rock y música alternativa" },
             { id: 14, name: "DGO", category: "entretenimiento", views: "2.436.757", emoji: "🎯", platform: "twitch", twitchUser: "dgo", description: "Gaming y streams" },
-            { id: 15, name: "Carajo", category: "musica", views: "1.974.647", emoji: "", platform: "youtube", youtubeId: "UCCarajoBand", description: "Rock en vivo" }
+            { id: 15, name: "Carajo", category: "musica", views: "1.974.647", emoji: "🤘", platform: "youtube", youtubeSearch: "Carajo banda en vivo", description: "Rock en vivo" }
         ];
 
         // ===== ESTADO =====
@@ -504,10 +504,12 @@
             iframe.allowFullscreen = true;
 
             if (ch.platform === 'twitch') {
+                // Twitch embed
                 iframe.src = `https://player.twitch.tv/?channel=${ch.twitchUser}&parent=${window.location.hostname}&autoplay=true&muted=false`;
                 iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
             } else {
-                iframe.src = `https://www.youtube.com/embed/live_stream?channel=${ch.youtubeId}&autoplay=1`;
+                // YouTube búsqueda por nombre (sin necesidad de Channel ID)
+                iframe.src = `https://www.youtube.com/embed?listType=search&list=${encodeURIComponent(ch.youtubeSearch)}&autoplay=1`;
                 iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
             }
 
@@ -636,7 +638,7 @@
             isLoggedIn = true; userName = user;
             localStorage.setItem('streamar_user', JSON.stringify({ user, email }));
             closeLogin();
-            showToast(` ¡Bienvenido ${user}!`);
+            showToast(`¡Bienvenido ${user}!`);
             updateHeaderUser();
         }
 
