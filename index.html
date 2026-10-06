@@ -442,24 +442,35 @@
 
     <script>
         // ===== CANALES =====
-        const channels = [
-            { id: 1, name: "Luzu", category: "entretenimiento", views: "92.145.765", emoji: "", platform: "twitch", twitchUser: "luzu", description: "Gaming y entretenimiento" },
-            { id: 2, name: "Olga", category: "entretenimiento", views: "45.147.073", emoji: "🎭", platform: "twitch", twitchUser: "olgavillafane", description: "Humor y variedades" },
-            { id: 3, name: "Azz Stream", category: "entretenimiento", views: "19.998.980", emoji: "🎬", platform: "twitch", twitchUser: "azzstream", description: "Streams y contenido" },
-            { id: 4, name: "Blender", category: "entretenimiento", views: "14.187.432", emoji: "🎨", platform: "twitch", twitchUser: "blenderar", description: "Creatividad y diseño" },
-            { id: 5, name: "La Casa Stream", category: "entretenimiento", views: "13.247.086", emoji: "", platform: "twitch", twitchUser: "lacasastream", description: "Reality y streams" },
-            { id: 6, name: "Bondi", category: "entretenimiento", views: "11.887.764", emoji: "🚌", platform: "twitch", twitchUser: "bondiar", description: "Cultura urbana" },
-            { id: 7, name: "Resumido Info", category: "noticias", views: "5.561.484", emoji: "📰", platform: "youtube", youtubeSearch: "Resumido Info en vivo", description: "Noticias resumidas" },
-            { id: 8, name: "Picado TV", category: "entretenimiento", views: "5.017.700", emoji: "⚽", platform: "twitch", twitchUser: "picadotv", description: "Deportes y más" },
-            { id: 9, name: "Carnaval", category: "entretenimiento", views: "4.595.073", emoji: "🎉", platform: "twitch", twitchUser: "carnavalar", description: "Fiesta y música" },
-            { id: 10, name: "Vorterix", category: "musica", views: "4.994.387", emoji: "🎵", platform: "youtube", youtubeSearch: "Vorterix en vivo", description: "Radio y música en vivo" },
-            { id: 11, name: "Infobae", category: "noticias", views: "4.164.566", emoji: "📡", platform: "youtube", youtubeSearch: "Infobae en vivo", description: "Noticias 24/7" },
-            { id: 12, name: "Gelatina", category: "entretenimiento", views: "2.809.375", emoji: "🍮", platform: "twitch", twitchUser: "gelatinaar", description: "Contenido juvenil" },
-            { id: 13, name: "Futurock", category: "musica", views: "2.244.463", emoji: "", platform: "youtube", youtubeSearch: "Futurock en vivo", description: "Rock y música alternativa" },
-            { id: 14, name: "DGO", category: "entretenimiento", views: "2.436.757", emoji: "🎯", platform: "twitch", twitchUser: "dgo", description: "Gaming y streams" },
-            { id: 15, name: "Carajo", category: "musica", views: "1.974.647", emoji: "🤘", platform: "youtube", youtubeSearch: "Carajo banda en vivo", description: "Rock en vivo" }
+              const channels = [
+            // 📺 Canales 24/7 (SIEMPRE funcionan)
+            { id: 1, name: "Infobae", category: "noticias", views: "4.164.566", emoji: "📡", platform: "youtube", youtubeSearch: "Infobae", description: "Noticias 24/7" },
+            { id: 2, name: "TN Todo Noticias", category: "noticias", views: "10.000.000", emoji: "📰", platform: "youtube", youtubeSearch: "Todo Noticias TN en vivo", description: "Noticias 24 horas" },
+            { id: 3, name: "C5N", category: "noticias", views: "8.500.000", emoji: "📺", platform: "youtube", youtubeSearch: "C5N en vivo", description: "Canal de noticias 24/7" },
+            { id: 4, name: "Crónica TV", category: "noticias", views: "9.800.000", emoji: "📹", platform: "youtube", youtubeSearch: "Crónica TV en vivo", description: "Noticias 24 horas" },
+            { id: 5, name: "TV Pública", category: "entretenimiento", views: "5.000.000", emoji: "🇦🇷", platform: "youtube", youtubeSearch: "TV Pública Argentina en vivo", description: "Canal público 24/7" },
+            { id: 6, name: "DeporTV", category: "entretenimiento", views: "4.200.000", emoji: "⚽", platform: "youtube", youtubeSearch: "DeporTV en vivo", description: "Deportes 24/7" },
+            { id: 7, name: "Encuentro", category: "entretenimiento", views: "4.500.000", emoji: "📚", platform: "youtube", youtubeSearch: "Encuentro en vivo", description: "Cultura y educación" },
+            { id: 8, name: "Canal 26", category: "noticias", views: "5.500.000", emoji: "📺", platform: "youtube", youtubeSearch: "Canal 26 en vivo", description: "Noticias 24 horas" },
+            { id: 9, name: "A24", category: "noticias", views: "7.200.000", emoji: "🗞️", platform: "youtube", youtubeSearch: "A24 en vivo", description: "Noticias en vivo" },
+            { id: 10, name: "LN+", category: "noticias", views: "6.500.000", emoji: "📡", platform: "youtube", youtubeSearch: "LN+ La Nación en vivo", description: "Noticias 24/7" },
+            
+            // 🎮 Canales de Streaming / Twitch (funcionan cuando transmiten)
+            { id: 11, name: "Luzu", category: "entretenimiento", views: "92.145.765", emoji: "🎮", platform: "twitch", twitchUser: "luzu", description: "Gaming y entretenimiento" },
+            { id: 12, name: "Olga", category: "entretenimiento", views: "45.147.073", emoji: "🎭", platform: "twitch", twitchUser: "olgavillafane", description: "Humor y variedades" },
+            { id: 13, name: "Azz Stream", category: "entretenimiento", views: "19.998.980", emoji: "🎬", platform: "twitch", twitchUser: "azzstream", description: "Streams y contenido" },
+            { id: 14, name: "Blender", category: "entretenimiento", views: "14.187.432", emoji: "🎨", platform: "twitch", twitchUser: "blenderar", description: "Creatividad y diseño" },
+            { id: 15, name: "La Casa Stream", category: "entretenimiento", views: "13.247.086", emoji: "🏠", platform: "twitch", twitchUser: "lacasastream", description: "Reality y streams" },
+            { id: 16, name: "Bondi", category: "entretenimiento", views: "11.887.764", emoji: "🚌", platform: "twitch", twitchUser: "bondiar", description: "Cultura urbana" },
+            { id: 17, name: "Resumido Info", category: "noticias", views: "5.561.484", emoji: "📰", platform: "youtube", youtubeSearch: "Resumido Info en vivo", description: "Noticias resumidas" },
+            { id: 18, name: "Picado TV", category: "entretenimiento", views: "5.017.700", emoji: "⚽", platform: "twitch", twitchUser: "picadotv", description: "Deportes y más" },
+            { id: 19, name: "Carnaval", category: "entretenimiento", views: "4.595.073", emoji: "🎉", platform: "twitch", twitchUser: "carnavalar", description: "Fiesta y música" },
+            { id: 20, name: "Vorterix", category: "musica", views: "4.994.387", emoji: "🎵", platform: "youtube", youtubeSearch: "Vorterix en vivo", description: "Radio y música en vivo" },
+            { id: 21, name: "Gelatina", category: "entretenimiento", views: "2.809.375", emoji: "🍮", platform: "twitch", twitchUser: "gelatinaar", description: "Contenido juvenil" },
+            { id: 22, name: "Futurock", category: "musica", views: "2.244.463", emoji: "🎸", platform: "youtube", youtubeSearch: "Futurock en vivo", description: "Rock y música alternativa" },
+            { id: 23, name: "DGO", category: "entretenimiento", views: "2.436.757", emoji: "🎯", platform: "twitch", twitchUser: "dgo", description: "Gaming y streams" },
+            { id: 24, name: "Carajo", category: "musica", views: "1.974.647", emoji: "🤘", platform: "youtube", youtubeSearch: "Carajo banda en vivo", description: "Rock en vivo" }
         ];
-
         // ===== ESTADO =====
         let currentChannel = -1;
         let favorites = JSON.parse(localStorage.getItem('streamar_favs') || '[]');
